@@ -21,4 +21,3 @@ Go to the extension's "Options" and select the "local" Active URL (which should
 be `http://localhost:8080`). By default, the containers are configured to
 server on `8080`, but this can be changed by editing the `command` and `ports`
 directives in `docker-compose.yml`.
-
