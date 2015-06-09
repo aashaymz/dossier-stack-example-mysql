@@ -1,0 +1,20 @@
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: secret
+  ports: ["3306"]
+  volumes:
+    - "mysql:/var/lib/mysql"
+
+dossier:
+  image: diffeo/dossier-stack:latest
+  command: >
+    /run.sh uwsgi --http-socket 0.0.0.0:8080 --wsgi dossier.models.web.wsgi
+          --pyargv "-c /config.yaml"
+          --master --processes 4 --vacuum --max-requests 5000
+          --python-auto-reload=2
+  ports: ["8080:8080"]
+  volumes:
+    - "config.yaml:/config.yaml"
+  links:
+    - mysql

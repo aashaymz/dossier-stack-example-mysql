@@ -1,0 +1,23 @@
+dossier.store:
+  feature_indexes:
+    - phone
+    - email
+    - post_author_username
+    - post_author_location
+    - image_url
+    - bowNP_sip
+
+dossier.models:
+  tfidf_path: /background-50000.tfidf
+
+kvlayer:
+  storage_type: mysql
+  storage_addresses: [mysql]
+  user: root
+  password: secret
+  app_name: dossier
+  namespace: dev01
+
+logging:
+  root:
+    level: DEBUG
